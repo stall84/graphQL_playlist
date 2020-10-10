@@ -1,12 +1,14 @@
 {
   "name": "playlist-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Book and Author 'Playlist' full-stack App utilizing ExpressJS and GraphQL API with MongoDB backend.",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "npx nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Michael Stallings",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
