@@ -3,6 +3,7 @@ const { graphqlHTTP } = require('express-graphql');
 const mongoose = require('mongoose');
 const schema1 = require('./schema/schema');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING);
 
 
 // Middleware
+
+app.use(cors());            // Adding cors package middleware for development 
 
 app.use('/graphql', graphqlHTTP({
     schema: schema1,
