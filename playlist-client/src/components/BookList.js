@@ -1,16 +1,9 @@
 import React from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { GET_BOOKS } from '../queries/queries';
 
 
 
-const GET_BOOKS = gql`
-   query GetBooks {
-        books {
-            name
-            id
-        }
-    }
-`;
 
 function BookList() {
 
@@ -20,7 +13,7 @@ function BookList() {
 
   return (
     <div >
-      <ul id="book-list">
+      <ul id="book-list"><h3>Books</h3>
           {data.books.map(book => (
               <li key={book.id}>
                   {book.name}
