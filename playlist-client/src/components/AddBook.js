@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation, fromPromise } from '@apollo/client';
 import { GET_AUTHORS } from '../graphql/queries';
 import { ADD_BOOK } from '../graphql/mutations';
 
@@ -18,11 +18,12 @@ function AddBook() {
         setFormState({ ...formState, [key]: value })
     }
 
-    const sendData = () => {
-        //...
-        addBook();
+    const sendData = (e) => {
+        e.preventDefault();
+        console.log('InitialState: ', initialState);
+        console.log('FormState: ', formState);
         setFormState(initialState);
-    }
+    }    
 
     const { loading, error, data } = useQuery(GET_AUTHORS);
     if (loading) return 'Loading, Please wait...';
@@ -39,7 +40,7 @@ function AddBook() {
     return (
         <>
        
-        <form id="add-book" >
+        <form id="add-book" onSubmit={sendData} >
 
             <div className="field" style={styles.formField} >
                 <label>Book Name</label>
