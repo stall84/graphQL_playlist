@@ -115,6 +115,7 @@ const Mutation = new GraphQLObjectType({
                 authorID: { type: new GraphQLNonNull(GraphQLID) }
             },
             resolve(parent, args) {
+                console.log('Receiving AddBook Mutation Directive...');
                 let book = new Book({
                     name: args.name,
                     genre: args.genre,

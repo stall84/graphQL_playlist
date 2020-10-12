@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_BOOKS } from '../queries/queries';
+import { GET_BOOKS } from '../graphql/queries';
 
 
 

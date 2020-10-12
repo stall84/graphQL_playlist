@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useQuery } from '@apollo/client';
-import { GET_AUTHORS } from '../queries/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_AUTHORS } from '../graphql/queries';
+import { ADD_BOOK } from '../graphql/mutations';
 
 
 
@@ -10,6 +11,18 @@ function AddBook() {
     const initialState = { name: '', genre: '', authorID: '' };
 
     const [ formState, setFormState ] = useState(initialState);
+    
+    const [ addBook, { bookData } ] = useMutation(ADD_BOOK);
+
+    const setInput = (key, value) => {
+        setFormState({ ...formState, [key]: value })
+    }
+
+    const sendData = () => {
+        //...
+        addBook();
+        setFormState(initialState);
+    }
 
     const { loading, error, data } = useQuery(GET_AUTHORS);
     if (loading) return 'Loading, Please wait...';
@@ -25,33 +38,27 @@ function AddBook() {
 
     return (
         <>
-        {/* <div>
-            <ul><h3>Authors</h3>
-                {data.authors.map(author => (
-                    <li key={author.id}>{author.name}</li>
-                ))}
-            </ul>
-        </div> */}
-        <form id="add-book">
+       
+        <form id="add-book" >
 
             <div className="field" style={styles.formField} >
                 <label>Book Name</label>
-                <input type="text" />
+                <input type="text" onChange={ e => setInput( 'name', e.target.value) } />
             </div>
 
             <div className="field" style={styles.formField} >
                 <label>Genre</label>
-                <input type="text" />
+                <input type="text" onChange={ e => setInput( 'genre', e.target.value) } />
             </div>
             
             <div className="field" style={styles.formField} >
                 <label>Author</label>
-                <select>
+                <select onChange={ e => setInput( 'authorID', e.target.value) } >
                     <option>Select Author</option>
                     {authorSelect()}
                 </select>
             </div>
-            <button>+</button>
+            <button type="submit">+</button>
         </form>
         </>
     )
