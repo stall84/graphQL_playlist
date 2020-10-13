@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery, useMutation, fromPromise } from '@apollo/client';
-import { GET_AUTHORS } from '../graphql/queries';
+import { GET_AUTHORS, GET_BOOKS } from '../graphql/queries';
 import { ADD_BOOK } from '../graphql/mutations';
 
 
@@ -12,17 +12,34 @@ function AddBook() {
 
     const [ formState, setFormState ] = useState(initialState);
     
-    const [ addBook, { bookData } ] = useMutation(ADD_BOOK);
+    const [ addBook ] = useMutation(ADD_BOOK, { onError(err) {
+        console.log(err);
+    }});
 
     const setInput = (key, value) => {
         setFormState({ ...formState, [key]: value })
     }
 
-    const sendData = (e) => {
-        e.preventDefault();
+    function sendData(event) {
+        console.log('sendData initiated...');
+        event.preventDefault();
+        const bookToAdd = {...formState};
         console.log('InitialState: ', initialState);
         console.log('FormState: ', formState);
+        console.log('BookToAdd Local Variable: ', bookToAdd);
+        addBook({
+            variables: {
+                name: formState.name,
+                genre: formState.genre,
+                authorID: formState.authorID
+            },
+            refetchQueries: [{ query: GET_BOOKS }]
+            });
+        
         setFormState(initialState);
+        // console.log('Initial State After: ', initialState)
+        //console.log('BookData Object: ', bookData);
+
     }    
 
     const { loading, error, data } = useQuery(GET_AUTHORS);
