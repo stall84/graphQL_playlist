@@ -11,7 +11,7 @@ import BookDetails from './BookDetails';
 
 function BookList() {
 
-  const [bookId, setBookId] = useState({bookID: ''});
+  const [ bookId, setBookId] = useState('');
 
   const { loading, error, data } = useQuery(GET_BOOKS);
     if (loading) return 'Loading, Please wait...';
@@ -24,13 +24,13 @@ function BookList() {
     <div >
       <ul id="book-list"><h3>Books</h3>
           {data.books.map(book => (
-              <li key={book.id} value={book.id} onClick={e => console.log('You Clicked: ', e.target.value)}>
+              <li key={book.id} onClick={e => setBookId(book.id)}>
                   {book.name}
               </li>
           ))}
       </ul>
     </div>
-    <BookDetails />
+    <BookDetails id={bookId} />
     </>
   );
 }

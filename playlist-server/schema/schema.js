@@ -73,6 +73,7 @@ const RootQuery = new GraphQLObjectType({               // Maps out how a user i
             args: { id: { type: GraphQLID } },
             resolve(parent, args) {                     // resolve(r) function specifies how to get the data
                                                        // client is requesting. Returning that to the client
+               console.log('Book Query incoming...')                                        
                return Book.findById(args.id);
             }
         },
