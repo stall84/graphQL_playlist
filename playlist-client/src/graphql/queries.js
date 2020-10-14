@@ -22,5 +22,24 @@ const GET_AUTHORS = gql`
     }
 `;
 
+// GET SINGLE BOOK DETAILS
+const GET_BOOK = gql`
+    query GetBook($id: ID) {
+        book(id: $id) {
+            id
+            name
+            genre
+            author{
+                id
+                name
+                age
+                books {
+                    name
+                    id
+                }
+            }
+        }
+    }
+`;
 
-export { GET_BOOKS, GET_AUTHORS };
+export { GET_BOOKS, GET_AUTHORS, GET_BOOK };
