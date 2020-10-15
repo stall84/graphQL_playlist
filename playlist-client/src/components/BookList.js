@@ -30,7 +30,9 @@ function BookList() {
           ))}
       </ul>
     </div>
+    { bookId &&
     <BookDetails id={bookId} />
+    }
     </>
   );
 }
