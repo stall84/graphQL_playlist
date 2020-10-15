@@ -19,17 +19,13 @@ function BookDetails({ id }) {
 
         return (
             <div id="book-details">
-            <h2>Output book details here</h2> 
-            <button onClick={() => refetch()}>Refetch</button>
-            <button onClick={() => setBookDetail(data)}>LOG</button>
+            <h2>{data.book.name}</h2> 
+            {/* <button onClick={() => refetch()}>Refetch</button>
+            <button onClick={() => setBookDetail(data)}>LOG</button> */}
             <ul id="details-ul">
-            
-            {/* {data.map(book => (
-                <li key={book.id}>
-                    {book.name}
-                    {book.genre}
-                </li>
-            ))} */}
+                <li><b>Author:</b> {data.book.author.name}</li>
+                <li><b>Genre:</b> {data.book.genre}</li>
+                <li><b>ID:</b> {data.book.id}</li>
             </ul>
             </div>
         )
