@@ -24,6 +24,13 @@ function BookDetails({ id }) {
                     <h2>{book.name}</h2>
                     <h3>{book.genre}</h3>
                     <h3>{book.author.name}</h3>
+                    <p>All Books By Author:</p>
+                    <ul className="other-books">
+                        { book.author.books.map(item => {
+                            return <li key={item.id}>{item.name}</li>
+                        })
+                        }
+                    </ul>
                 </div>
             )
         }
