@@ -39,14 +39,7 @@ function BookDetails({ id }) {
         return (
             <div id="book-details">
                 <DisplayBookDetails />
-            {/* <h2>{data.book.name}</h2> 
-            {/* <button onClick={() => refetch()}>Refetch</button>
-            <button onClick={() => setBookDetail(data)}>LOG</button> */}
-            {/* <ul id="details-ul">
-                <li><b>Author:</b> {data.book.author.name}</li>
-                <li><b>Genre:</b> {data.book.genre}</li>
-                <li><b>ID:</b> {data.book.id}</li>
-            </ul>  */}
+           
             </div>
         )
     }

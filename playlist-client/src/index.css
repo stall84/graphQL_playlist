@@ -53,9 +53,8 @@ body {
 form {
   background: #fff;
   padding: 20px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  position: relative;
+  bottom: 0px;
   width: 400px;
 }
 
@@ -80,10 +79,20 @@ form button {
   color: #fff;
   font-size: 2em;
   background: #AD1457;
-  border: 0;
+  border: 0px;
   padding: 0 10px;
   border-radius: 50%;
   cursor: pointer;
   bottom: 10px;;
   left: 10px;
+}
+
+#book-details {
+  background: #AD1457;
+  padding: 1em;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 40%;
+  height: 100%;
 }

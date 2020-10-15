@@ -22,7 +22,7 @@ function BookList() {
   return (
     <>
     <div >
-      <ul id="book-list"><h3>Books</h3>
+      <ul id="book-list"><h3>Books in Database</h3>
           {data.books.map(book => (
               <li key={book.id} onClick={e => setBookId(book.id)}>
                   {book.name}

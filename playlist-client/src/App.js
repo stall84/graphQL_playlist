@@ -10,19 +10,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-// client
-//   .query({
-//     query: gql`
-//      query GetBooks {
-//        books {
-//         name
-//         genre
-//       }
-//       }
-//     `
-//   })
-//   .then(result => console.log(`Result of GQL query: ${result.data.books[2].name} `))
-//   .catch(error => console.error(`Ooops!.. U fukiewuckied it: ${error}`));
+
 
 function App() {
   return (
@@ -30,8 +18,9 @@ function App() {
     <div id="main">
       <h1>Book-Author Playlist</h1>
       <BookList />
+      <AddBook />
     </div>
-    <AddBook />
+    
     </ApolloProvider>
   );
 }

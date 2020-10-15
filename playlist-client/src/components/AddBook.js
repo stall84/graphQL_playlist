@@ -20,9 +20,9 @@ function AddBook() {
         setFormState({ ...formState, [key]: value })
     }
 
-    function sendData(event) {
+    function sendData() {
         console.log('sendData initiated...');
-        event.preventDefault();
+        //event.preventDefault();
         const bookToAdd = {...formState};
         console.log('InitialState: ', initialState);
         console.log('FormState: ', formState);
