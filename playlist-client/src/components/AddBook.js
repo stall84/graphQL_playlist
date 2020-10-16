@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useQuery, useMutation, fromPromise } from '@apollo/client';
+import React, { useState } from 'react'
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_AUTHORS, GET_BOOKS } from '../graphql/queries';
 import { ADD_BOOK } from '../graphql/mutations';
 
@@ -21,12 +21,7 @@ function AddBook() {
     }
 
     function sendData() {
-        console.log('sendData initiated...');
-        //event.preventDefault();
-        const bookToAdd = {...formState};
-        console.log('InitialState: ', initialState);
-        console.log('FormState: ', formState);
-        console.log('BookToAdd Local Variable: ', bookToAdd);
+
         addBook({
             variables: {
                 name: formState.name,
@@ -37,8 +32,6 @@ function AddBook() {
             });
         
         setFormState(initialState);
-        // console.log('Initial State After: ', initialState)
-        //console.log('BookData Object: ', bookData);
 
     }    
 

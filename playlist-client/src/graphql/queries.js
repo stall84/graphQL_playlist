@@ -21,7 +21,7 @@ const GET_AUTHORS = gql`
         }
     }
 `;
-
+// QUERY BELOW WILL RETURN SINGLE BOOK WITH CASCADING INFO ON THE AUTHROS BOOKS
 // GET SINGLE BOOK DETAILS
 const GET_BOOK = gql`
     query GetBook($id: ID) {

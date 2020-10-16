@@ -9,12 +9,12 @@ function BookDetails({ id }) {
 
     //const { bookID } = props.bookID
     
-    const { loading, error, data, refetch } = useQuery(GET_BOOK, {variables: { id } } );
-    const [ bookDetail, setBookDetail ] = useState('');
+    const { loading, error, data } = useQuery(GET_BOOK, {variables: { id } } );
+ 
 
     if (loading) return 'Loading, Please Wait...';
     if (error) return `There was an error querrying DB: ${error.message}`;
-    console.log("BookDetails ID: ", id)
+    
     
     const DisplayBookDetails = () => {
         const { book } = data;
@@ -39,7 +39,6 @@ function BookDetails({ id }) {
         return (
             <div id="book-details">
                 <DisplayBookDetails />
-           
             </div>
         )
     }
